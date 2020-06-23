@@ -1,6 +1,7 @@
 package io.github.sigrist.blog.records;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -38,6 +39,21 @@ public class UserTest {
 	}
 
 	/**
+	 * Test if two different instances created with different parameters are not equals and
+	 * have the different hash code.
+	 */
+	@Test
+	public void testNotEqualsAndHashCode() {
+
+		final User user1 = new User(1L, "sigrist");
+		final User user2 = new User(2L, "paulo");
+
+		assertNotEquals(user1, user2);
+		assertNotEquals(user1.hashCode(), user2.hashCode());
+
+	}
+
+	/**
 	 * Test the generated toString method.
 	 */
 	@Test
@@ -46,5 +62,5 @@ public class UserTest {
 
 		assertEquals("User[id=1, login=sigrist]", user.toString());
 	}
-
+		
 }
